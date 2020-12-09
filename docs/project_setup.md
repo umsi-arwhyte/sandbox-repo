@@ -155,10 +155,16 @@ Change "origin" alias to your Github account name (optional).
 git remote rename origin your_account_name
 ```
 
-Add remote.
+Add remote using your Github account name.
 
 ```commandline
 git remote add arwhyte git@github.com:arwhyte/sandbox-repo.git
+```
+
+Add a second remote that adds the upstream umsi-arwhyte sandbox-repo.
+
+```commandline
+git remote add umsi-arwhyte git@github.com:umsi-arwhyte/sandbox-repo.git
 ```
 
 Confirm remotes.
@@ -166,10 +172,10 @@ Confirm remotes.
 ```commandline
 git remote -v
 
-some_account_name git@github.com:some_account_name/sandbox-repo.git (fetch)
-some_account_name git@github.com:some_account_name/sandbox-repo.git (push)
-arwhyte git@github.com:arwhyte/sandbox-repo.git (fetch)
-arwhyte git@github.com:arwhyte/sandbox-repo.git (push)
+arwhyte	git@github.com:arwhyte/sandbox-repo.git (fetch)
+arwhyte	git@github.com:arwhyte/sandbox-repo.git (push)
+umsi-arwhyte	git@github.com:umsi-arwhyte/sandbox-repo.git (fetch)
+umsi-arwhyte	git@github.com:umsi-arwhyte/sandbox-repo.git (push)
 ```
 
 ### Edit README
@@ -195,7 +201,7 @@ __macOS__
 
 ```commandline
 python3 -m pip list
-python3 -m pip install virtualenv venv
+python3 -m pip install virtualenv
 ```
 
 Create a virtual environment.
@@ -219,7 +225,7 @@ __Windows 10__
 
 ```commandline
 python -m pip list
-python -m pip install virtualenv venv
+python -m pip install virtualenv
 ```
 
 Create a virtual environment.
