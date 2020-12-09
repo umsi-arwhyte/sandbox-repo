@@ -132,7 +132,7 @@ Once the repo has been forked, click the green "Code" button, copy the repo link
 to an appropriate directory on your local machine.
 
 ```commandline
-git clone git@github.com:your_account_name/practice_repo.git
+git clone git@github.com:your_account_name/sandbox-repo.git
 ```
 
 ### 3.3 Update remotes
@@ -145,8 +145,8 @@ Check remotes.
 ```commandline
 git remote -v
 
-origin git@github.com:your_account_name/practice_repo.git (fetch)
-origin git@github.com:your_account_name/practice_repo.git (push)
+origin git@github.com:your_account_name/sandbox-repo.git (fetch)
+origin git@github.com:your_account_name/sandbox-repo.git (push)
 ```
 
 Change "origin" alias to your Github account name (optional).
@@ -158,7 +158,7 @@ git remote rename origin your_account_name
 Add remote.
 
 ```commandline
-git remote add arwhyte git@github.com:arwhyte/practice_repo.git
+git remote add arwhyte git@github.com:arwhyte/sandbox-repo.git
 ```
 
 Confirm remotes.
@@ -166,10 +166,10 @@ Confirm remotes.
 ```commandline
 git remote -v
 
-some_account_name git@github.com:some_account_name/practice_repo.git (fetch)
-some_account_name git@github.com:some_account_name/practice_repo.git (push)
-arwhyte git@github.com:arwhyte/practice_repo.git (fetch)
-arwhyte git@github.com:arwhyte/practice_repo.git (push)
+some_account_name git@github.com:some_account_name/sandbox-repo.git (fetch)
+some_account_name git@github.com:some_account_name/sandbox-repo.git (push)
+arwhyte git@github.com:arwhyte/sandbox-repo.git (fetch)
+arwhyte git@github.com:arwhyte/sandbox-repo.git (push)
 ```
 
 ### Edit README
