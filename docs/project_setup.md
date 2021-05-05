@@ -172,83 +172,143 @@ Confirm remotes.
 ```commandline
 git remote -v
 
-arwhyte	git@github.com:arwhyte/sandbox-repo.git (fetch)
-arwhyte	git@github.com:arwhyte/sandbox-repo.git (push)
-umsi-arwhyte	git@github.com:umsi-arwhyte/sandbox-repo.git (fetch)
-umsi-arwhyte	git@github.com:umsi-arwhyte/sandbox-repo.git (push)
+arwhyte git@github.com:arwhyte/sandbox-repo.git (fetch)
+arwhyte git@github.com:arwhyte/sandbox-repo.git (push)
+umsi-arwhyte git@github.com:umsi-arwhyte/sandbox-repo.git (fetch)
+umsi-arwhyte git@github.com:umsi-arwhyte/sandbox-repo.git (push)
 ```
 
-### Edit README
+## Virtual environment
 
-Edit readme then stage, commit, push and issue a pull request against the upstream repo.
+I use the [virtualenv](https://pypi.org/project/virtualenv/) package to create my Python virtual environments. Python 3.x also provide a `venv` module that you can use.
 
-Command sequence
+:exclamation: if Windows can't find virtualenv then a `PATH` issue may exist. Create a virtual
+environment using Python 3.x native `venv`.
 
-```commandline
-git status
-git add README.md
-git status
-git commit -m "..."
-git push some_account_name master
+Below are the commands required to create a virtual environment that is provisioned with its own
+Python binary (same version as that used to create the virtual environment).
 
-git pull arwhyte master
-pit push push some_account_name master
-```
-
-## Virtual environments
-
-__macOS__
+#### macOS: virtualenv
 
 ```commandline
-python3 -m pip list
 python3 -m pip install virtualenv
-```
-
-Create a virtual environment.
-
-```commandline
-cd path_to_practice_project
+cd path/to/project
 virtualenv venv
 source venv/bin/activate
-python3 -m pip list
+```
+
+#### Windows 10: venv (Git Bash)
+
+```commandline
+cd path/to/project
+python -m venv venv
+venv/Scripts/activate
+```
+
+#### Windows 10: venv (cmd.exe)
+
+```commandline
+cd path/to/project
+python -m venv venv
+C:\venv\Scripts\activate
+```
+
+Once the virtual environment is created and activated, additional Python packages can be installed
+and managed using a `requirements.txt` file.
+
+:bulb: once activated the command prompt will be prefixed with the name of your virtual environment
+between parentheses.
+
+```commandline
+(venv) . . .
+```
+
+Install the requests package using `pip`. Once installed review the installed packages.
+
+#### macOS
+
+```commandline
 python3 -m pip install requests
+python3 -m pip list
+```
+
+#### Windows 10
+
+```commandline
+python -m pip install requests
+python -m pip list
+```
+
+```commandline
+Package    Version
+---------- ---------
+certifi    2020.12.5
+chardet    3.0.4
+idna       2.10
+pip        20.3.1
+requests   2.25.0
+setuptools 51.0.0
+urllib3    1.26.2
+wheel      0.36.1
+```
+
+### Requirements files
+
+Requirements files provide a list of required project packages. You can _freeze_ the current set of dependencies and writing package and version information to a `requirements.txt` file.
+
+
+#### macOS
+
+```commandline
 python3 -m pip freeze > requirements.txt
 ```
 
-Fresh install (read from requirements.txt)
+#### Windows 10
 
 ```commandline
-python3 -m pip install -r requirements.txt
-```
-
-__Windows 10__
-
-```commandline
-python -m pip list
-python -m pip install virtualenv
-```
-
-Create a virtual environment.
-
-```commandline
-cd path_to_practice_project
-virtualenv venv
-source venv/Scripts/activate
-python -m pip list
-python -m pip install requests
 python -m pip freeze > requirements.txt
 ```
 
-Note: if Windows can't find virtualenv then a `PATH` issue exists. Create a virtual environment
-using Python 3.x native `venv`.
+Team members and others who fork/clone your project can install all required project dependencies
+by having `pip` read `requirements.txt`.
 
-```commandline
-cd path_to_practice_project
-python venv venv
-```
-
-Fresh install (read from requirements.txt)
+#### macOS
 
 ```commandline
 python3 -m pip install -r requirements.txt
+```
+
+#### Windows 10
+
+```commandline
+python -m pip install -r requirements.txt
+```
+
+### Git exercise
+
+Create a Python file named `< uniqname >.py`. Use the `requests` module to issue an HTTP GET
+request and retrieve a JSON representation of Darth Vader decoded as a `dict` from the Star Wars API (SWAPI).
+
+```python
+import requests
+
+
+endpoint = 'https://swapi.py4e.com/api'
+response = requests.get(f"{endpoint}/people/", {'search': 'darth'}).json()
+darth_vader = response['results'][0]
+
+print(f"\nDarth Vader = {darth_vader}")
+```
+
+#### Command sequence
+
+```commandline
+git status
+git add < uniqname >.py
+git status
+git commit -m "..."
+git push some_account_name main
+
+git pull < some_account > main
+pit push push < some_account > main
 ```
