@@ -64,10 +64,17 @@ Host *
   IdentityFile ~/.ssh/id_rsa
 ```
 
-Add your SSH key. Note that the `-K` flag stores your RSA key's passphrase in your keychain.
+Add your SSH key. Note that the `-K` flag stores your RSA key's passphrase in your keychain which eliminates the need to provide your
+passphrase when interacting with Github via the commandline.
 
 ```commandline
-ssh-add -K ~/.ssh/id_rsa
+ssh-add --apple-use-keychain ~/.ssh/id_rsa
+```
+
+:exclamation: The `-K` and `-A` flags are deprecated and have been replaced by the `--apple-use-keychain` and `--apple-load-keychain` flags.
+
+```commandline
+ssh-add -K ~/.ssh/id_rsa [deprecated]
 ```
 
 ### Register SSH public key with Github
